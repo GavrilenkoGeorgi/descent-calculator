@@ -13,7 +13,6 @@ const CalcForm = ({ calculate }) => {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		console.log('Submitting values', currAlt, desAlt)
 		const data = {
 			currAlt,
 			desAlt,
@@ -21,18 +20,22 @@ const CalcForm = ({ calculate }) => {
 			grndSpeed
 		}
 		calculate(data)
+	}
+
+	const handleReset = () => {
 		resetCurrAlt()
 		resetDesAlt()
 		resetGrndSpeed()
 		resetDescRate()
 	}
 
-	return <form onSubmit={handleSubmit} className={classes.form}>
+	return <form onSubmit={handleSubmit} onReset={handleReset} className={classes.form}>
 		<fieldset>
-			<legend>Altitude</legend>
+			<legend>Set altitude <small><em>(feet)</em></small></legend>
 			<label>
 				<input
 					type="number"
+					name="currAlt"
 					required
 					placeholder="Current altitude"
 					{...bindCurrAlt}
@@ -41,6 +44,7 @@ const CalcForm = ({ calculate }) => {
 			<label>
 				<input
 					type="number"
+					name="desAlt"
 					required
 					placeholder="Destination altitude"
 					{...bindDesAlt}
@@ -49,10 +53,12 @@ const CalcForm = ({ calculate }) => {
 		</fieldset>
 
 		<fieldset>
-			<legend>Rate and speed</legend>
+			<legend>Set rate <small><em>(feet/min)</em></small>{' '}
+			and ground speed <small><em>(knots)</em></small></legend>
 			<label>
 				<input
 					type="number"
+					name="descRate"
 					required
 					placeholder="Descent rate"
 					{...bindDescRate}
@@ -61,6 +67,7 @@ const CalcForm = ({ calculate }) => {
 			<label>
 				<input
 					type="number"
+					name="grndSpeed"
 					required
 					placeholder="Ground speed"
 					{...bindGrndSpeed}
@@ -72,6 +79,11 @@ const CalcForm = ({ calculate }) => {
 				className={classes.button}
 				type="submit"
 				value="calculate"
+			/>
+			<input
+				className={classes.button}
+				type="reset"
+				value="clear"
 			/>
 		</fieldset>
 	</form>

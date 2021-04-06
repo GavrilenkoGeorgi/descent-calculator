@@ -4,26 +4,24 @@ import CalcForm from '../calculator/CalcForm'
 import ResultsDisplay from '../calculator/ResultsDisplay'
 import DescentCalculator from '../../utils/descentCalculator'
 
+import classes from './CalcPage.module.sass'
+
 const CalcPage = () => {
-	console.log('[CalcPage.js]')
 
 	const [ results, setResults ] = useState({
-		ToD: 0,
-		descentTime: 0
+		ToD: '',
+		descentTime: ''
 	})
 
 	const calculator = new DescentCalculator
-	calculator.setParams(10000, 3000, 750, 150)
 
 	const handleFormData = data => {
-
-		console.log('Sending this to desc-calc', data)
-		console.log('Current calc params: ', calculator.getParams())
-		setResults({ ...results })
+		const results = calculator.setParams(data).getResults()
+		setResults((prevValue) => ({ ...prevValue, ...results }))
 	}
 
-	return <section>
-		<h1>Calculate ToD</h1>
+	return <section className={classes.container}>
+		<h1>Top of descent</h1>
 		<ResultsDisplay results={results} />
 		<CalcForm calculate={handleFormData}/>
 	</section>

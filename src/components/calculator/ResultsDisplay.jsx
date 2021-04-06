@@ -1,11 +1,36 @@
 import React from 'react'
+import { object } from 'prop-types'
 
-const ResultsDisplay = (props) => {
-	console.log('[ResultsDisplay.js]', props)
+import classes from './ResultsDisplay.module.sass'
 
-	return <div>
-		<h2>Results:</h2>
-	</div>
+const ResultsDisplay = ({ results }) => {
+
+	const showTod = () => results.ToD
+		? <>{results.ToD} miles away</>
+		: null
+
+	const showDescTime = () => results.descentTime
+		? <>{results.descentTime} minutes</>
+		: null
+
+	return <article className={classes.container}>
+		<p className={classes.header}>Results:</p>
+		<div className={classes.resultsRow}>
+			<p>
+				Top of descent<br />
+				{showTod()}
+			</p>
+			<p>
+				Descent time<br />
+				{showDescTime()}
+			</p>
+		</div>
+	</article>
+}
+
+ResultsDisplay.propTypes = {
+	results: object
+
 }
 
 // memoed

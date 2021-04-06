@@ -2,12 +2,14 @@
 
 export default class DescentCalculator {
 
-	setParams (currAlt, desAlt, descRate, grndSpeed) {
-		this.currAlt = currAlt
-		this.desAlt = desAlt
-		this.descRate = descRate // RoD
-		this.grndSpeed = grndSpeed // GS
+	setParams ({ currAlt, desAlt, descRate, grndSpeed }) {
+		this.currAlt = Number(currAlt)
+		this.desAlt = Number(desAlt)
+		this.descRate = Number(descRate) // RoD
+		this.grndSpeed = Number(grndSpeed) // GS
 		this.altDiff = currAlt - desAlt
+
+		return this
 	}
 
 	getParams () {
@@ -49,6 +51,16 @@ export default class DescentCalculator {
 		}
 	}
 
+	getResults () {
+		if (this.paramsOK()) {
+			const results = {
+				ToD: this.getTOD(),
+				descentTime: this.getDescentTime()
+			}
+			return results
+		} else return null
+	}
+
 	getTOD () {
 		const result = (this.altDiff / this.descRate) * (this.grndSpeed / 60)
 		return result.toFixed(2)
@@ -58,11 +70,3 @@ export default class DescentCalculator {
 		return (this.altDiff / this.descRate).toFixed(2)
 	}
 }
-
-/* const calculator = new DescentCalculator ()
-calculator.setParams(10000, 3000, 750, 150)
-
-console.log('Params OK:', calculator.paramsOK())
-console.log(calculator.getParams())
-console.log(`Descent time ${calculator.getDescentTime()}`)
-console.log(`Top of descent ${calculator.getTOD()}`) */

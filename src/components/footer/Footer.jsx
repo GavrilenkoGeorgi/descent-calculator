@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
 	return <footer>
-		GA Descent Caclulator Footer info and navigation links
+		GA Descent Caclulator
 	</footer>
 }
 

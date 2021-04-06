@@ -1,8 +1,10 @@
 import React from 'react'
 
+import classes from './Header.module.sass'
+
 const Header = () => {
-	return <header>
-		GA Descent Caclulator and navigation links
+	return <header className={classes.header}>
+		Simple GA Descent Caclulator
 	</header>
 }
 
