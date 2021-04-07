@@ -1,0 +1,31 @@
+@import 'colors'
+
+.container
+	p.header
+		text-align: center
+		margin: 0
+		font-size: 130%
+
+.resultsRow
+	display: flex
+	justify-content: space-around
+	margin-bottom: 1rem
+	p
+		text-align: center
+		flex: 1 1 0
+		border: $light-color 1px solid
+		border-radius: .3rem
+		margin: .5rem 0
+		min-height: 5rem
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		line-height: 1.6
+		color: $light-color
+		&:not(:last-child)
+			margin-right: .5rem
+		span
+			color: black
+			font-style: italic
+			font-weight: bolder
