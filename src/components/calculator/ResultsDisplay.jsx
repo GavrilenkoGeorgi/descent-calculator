@@ -14,15 +14,15 @@ const ResultsDisplay = ({ results }) => {
 		: null
 
 	return <article className={classes.container}>
-		<p className={classes.header}>Results:</p>
+		{/* <p className={classes.header}>Results:</p> */}
 		<div className={classes.resultsRow}>
 			<p>
-				Top of descent<br />
-				{showTod()}
+				ToD
+				<span>{showTod()}</span>
 			</p>
 			<p>
-				Descent time<br />
-				{showDescTime()}
+				Descent time
+				<span>{showDescTime()}</span>
 			</p>
 		</div>
 	</article>
