@@ -37,6 +37,12 @@
 		"sizes": "192x192",
 		"type": "image/png",
 		"density": "4.0"
+		},
+		{
+			"src": "%PUBLIC_URL%/icons/maskable_icon.png",
+			"sizes": "970x970",
+			"type": "image/png",
+			"purpose": "any maskable"
 		}
 	 ],
 	"start_url": "https://gavrilenkogeorgi.github.io/descent-calculator/",
