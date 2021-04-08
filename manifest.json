@@ -39,14 +39,14 @@
 		"density": "4.0"
 		},
 		{
-			"src": "icons/maskable_icon.png",
-			"sizes": "970x970",
+			"src": "icons/maskable_icon_x512.png",
+			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any maskable"
 		}
 	 ],
 	"start_url": "https://gavrilenkogeorgi.github.io/descent-calculator/",
 	"display": "standalone",
-	"theme_color": "#3c3d8b",
-	"background_color": "#3c3d8b"
+	"theme_color": "#3b5998",
+	"background_color": "#3b5998"
 }
