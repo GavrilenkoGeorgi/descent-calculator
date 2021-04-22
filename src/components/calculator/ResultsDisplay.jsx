@@ -1,28 +1,22 @@
 import React from 'react'
 import { object } from 'prop-types'
+import cx from 'classnames'
 
 import classes from './ResultsDisplay.module.sass'
 
 const ResultsDisplay = ({ results }) => {
 
-	const showTod = () => results.ToD
-		? <>{results.ToD} miles away</>
-		: null
+	const styles = cx(classes.resultsRow, { [classes.visible]: results.ToD })
 
-	const showDescTime = () => results.descentTime
-		? <>{results.descentTime} minutes</>
-		: null
-
-	return <article className={classes.container}>
-		{/* <p className={classes.header}>Results:</p> */}
-		<div className={classes.resultsRow}>
+	return <article>
+		<div className={styles}>
 			<p>
-				ToD
-				<span>{showTod()}</span>
+				{results.ToD && <>{results.ToD}<br />
+					<small><em>miles away</em></small></>}
 			</p>
 			<p>
-				Descent time
-				<span>{showDescTime()}</span>
+				{results.descentTime && <>{results.descentTime}<br />
+					<small><em>mins ETA</em></small></>}
 			</p>
 		</div>
 	</article>
@@ -30,8 +24,6 @@ const ResultsDisplay = ({ results }) => {
 
 ResultsDisplay.propTypes = {
 	results: object
-
 }
 
-// memoed
 export default ResultsDisplay

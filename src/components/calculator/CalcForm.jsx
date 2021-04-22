@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { func } from 'prop-types'
 import { useInput } from '../../hooks/useInput'
 
+import cx from 'classnames'
 import classes from './CalcForm.module.sass'
 
-const CalcForm = ({ calculate }) => {
+const CalcForm = ({ calculate, clearResults }) => {
 
 	const { value: currAlt, bind: bindCurrAlt, reset: resetCurrAlt } = useInput('')
 	const { value: desAlt, bind: bindDesAlt, reset: resetDesAlt } = useInput('')
 	const { value: descRate, bind: bindDescRate, reset: resetDescRate } = useInput('')
 	const { value: grndSpeed, bind: bindGrndSpeed, reset: resetGrndSpeed } = useInput('')
+
+	const [ focused, setFocused ] = useState({})
 
 	const handleSubmit = event => {
 		event.preventDefault()
@@ -25,56 +28,118 @@ const CalcForm = ({ calculate }) => {
 	const handleReset = () => {
 		resetCurrAlt()
 		resetDesAlt()
-		resetGrndSpeed()
 		resetDescRate()
+		resetGrndSpeed()
 	}
 
-	return <form onSubmit={handleSubmit} onReset={handleReset} className={classes.form}>
+	const focusInput = (event) => {
+		console.log('Focusing on:', event.target.name)
+		setFocused({ [event.target.name]: true })
+	}
+
+	const blurInput = (event) => {
+		console.log('Bluring on:', event.target.name)
+		setFocused({ [event.target.name]: false })
+	}
+
+	return <form
+		onSubmit={handleSubmit}
+		onReset={handleReset}
+		className={classes.materialForm}
+	>
 		<fieldset>
 			<legend>Set altitude <small><em>(feet)</em></small></legend>
-			<label>
+			{/*current altitude*/}
+			<div className={cx(classes.materialFormItem,
+				{ [classes.focused]: focused.currAlt, [classes.hasValue]: currAlt })}>
+				<label
+					className={classes.materialFormLabel}
+					htmlFor="currAlt"
+				>
+					Current altitude
+				</label>
 				<input
+					id="currAlt"
+					className={classes.materialFormField}
+					onFocus={focusInput}
+					onBlur={blurInput}
 					type="number"
 					name="currAlt"
 					required
-					placeholder="Current altitude"
 					{...bindCurrAlt}
 				/>
-			</label>
-			<label>
+			</div>
+
+			{/*destination altitude*/}
+			<div className={cx(classes.materialFormItem,
+				{ [classes.focused]: focused.desAlt, [classes.hasValue]: desAlt })}>
+				<label
+					className={classes.materialFormLabel}
+					htmlFor="desAlt"
+				>
+					Destination altitude
+				</label>
 				<input
+					id="desAlt"
+					className={classes.materialFormField}
+					onFocus={focusInput}
+					onBlur={blurInput}
 					type="number"
 					name="desAlt"
 					required
-					placeholder="Destination altitude"
 					{...bindDesAlt}
 				/>
-			</label>
+			</div>
 		</fieldset>
 
 		<fieldset>
-			<legend>Set rate <small><em>(feet/min)</em></small>{' '}
-			and ground speed <small><em>(knots)</em></small></legend>
-			<label>
+			<legend>Set rate <small><em>(feet/min)</em>
+			</small> and ground speed <small><em>(knots)</em></small>
+			</legend>
+			{/*descent rate*/}
+			<div className={cx(classes.materialFormItem,
+				{ [classes.focused]: focused.descRate, [classes.hasValue]: descRate })}>
+				<label
+					className={classes.materialFormLabel}
+					htmlFor="descRate"
+				>
+					Descent rate
+				</label>
 				<input
+					id="descRate"
+					className={classes.materialFormField}
+					onFocus={focusInput}
+					onBlur={blurInput}
 					type="number"
 					name="descRate"
 					required
-					placeholder="Descent rate"
 					{...bindDescRate}
 				/>
-			</label>
-			<label>
+			</div>
+
+			{/*ground speed*/}
+			<div className={cx(classes.materialFormItem,
+				{ [classes.focused]: focused.grndSpeed, [classes.hasValue]: grndSpeed })}>
+				<label
+					className={classes.materialFormLabel}
+					htmlFor="grndSpeed"
+				>
+					Ground speed
+				</label>
 				<input
+					id="grndSpeed"
+					className={classes.materialFormField}
+					onFocus={focusInput}
+					onBlur={blurInput}
 					type="number"
 					name="grndSpeed"
 					required
-					placeholder="Ground speed"
 					{...bindGrndSpeed}
 				/>
-			</label>
+			</div>
 		</fieldset>
-		<fieldset className={classes.btnContainer}>
+
+		<fieldset>
 			<input
 				className={classes.button}
 				type="submit"
@@ -84,13 +149,15 @@ const CalcForm = ({ calculate }) => {
 				className={classes.button}
 				type="reset"
 				value="clear"
+				onClick={clearResults}
 			/>
 		</fieldset>
 	</form>
 }
 
 CalcForm.propTypes= {
-	calculate: func.isRequired
+	calculate: func.isRequired,
+	clearResults: func.isRequired
 }
 
 export default CalcForm

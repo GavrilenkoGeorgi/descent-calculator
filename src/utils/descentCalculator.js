@@ -63,10 +63,10 @@ export default class DescentCalculator {
 
 	getTOD () {
 		const result = (this.altDiff / this.descRate) * (this.grndSpeed / 60)
-		return result.toFixed(2)
+		return Math.round(result)
 	}
 
 	getDescentTime () {
-		return (this.altDiff / this.descRate).toFixed(2)
+		return Math.round(this.altDiff / this.descRate)
 	}
 }

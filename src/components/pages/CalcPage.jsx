@@ -8,22 +8,27 @@ import classes from './CalcPage.module.sass'
 
 const CalcPage = () => {
 
-	const [ results, setResults ] = useState({
+	const calculator = new DescentCalculator
+	const initialResultsState = {
 		ToD: '',
 		descentTime: ''
-	})
+	}
 
-	const calculator = new DescentCalculator
+	const [ results, setResults ] = useState(initialResultsState)
 
 	const handleFormData = data => {
 		const results = calculator.setParams(data).getResults()
 		setResults((prevValue) => ({ ...prevValue, ...results }))
 	}
 
+	const clearResults = () => {
+		setResults(initialResultsState)
+	}
+
 	return <section className={classes.container}>
 		<h1>Top of descent</h1>
 		<ResultsDisplay results={results} />
-		<CalcForm calculate={handleFormData}/>
+		<CalcForm calculate={handleFormData} clearResults={clearResults}/>
 	</section>
 }
 
