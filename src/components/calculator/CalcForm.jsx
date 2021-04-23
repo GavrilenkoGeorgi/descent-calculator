@@ -33,12 +33,10 @@ const CalcForm = ({ calculate, clearResults }) => {
 	}
 
 	const focusInput = (event) => {
-		console.log('Focusing on:', event.target.name)
 		setFocused({ [event.target.name]: true })
 	}
 
 	const blurInput = (event) => {
-		console.log('Bluring on:', event.target.name)
 		setFocused({ [event.target.name]: false })
 	}
 
