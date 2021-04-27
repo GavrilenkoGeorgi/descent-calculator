@@ -1,38 +1,96 @@
 @import '../styles/_colors.sass'
 
-.form
-	text-align: center
+fieldset
+	border: none
+	padding: 0
+	margin: 0 0 2rem 0
 	display: flex
-	flex-direction: column
-	fieldset
-		padding: 0
-		border: 0
-		margin: 0
-		margin-bottom: 1.5rem
-		display: flex
-	input
-		flex: 1 1 0
 	legend
-		margin-bottom: .75rem
-		font-size: large
-	label
-		flex: 1 1 0
-		&:not(:last-child)
-			margin-right: .5rem
-		input
+		text-align: center
+		font-weight: 600
+		margin-bottom: 1rem
+
+.materialFormItem
+	position: relative
+	margin: 1rem .5rem 1rem .5rem
+	&:after
+		height: 2px
+		background-color: #cecfcf
+		width: 100%
+	&:before
+		height: 2px
+		background: $primary-light-color
+		z-index: 1
+		width: 0
+		transition: width .3s
+	&:after, &:before
+		display: block
+		content: ''
+		position: absolute
+		bottom: 0
+	&.error
+		margin-bottom: 36px
+		&:before
+			background-color: $error
+	&.focused
+		&:before
 			width: 100%
-			padding: .3rem
-			border: 1px solid $light-color
-			border-radius: .3rem
+
+.error small.error
+	position: absolute
+	background: transparent
+	color: $error
+	font-style: normal
+	padding-left: 0
+
+.materialFormLabel
+	display: block
+	width: 100%
+	position: absolute
+	top: 50%
+	transform: translateY(-50%)
+	line-height: 1
+	cursor: text
+	color: $primary-light-color
+	transition: transform ease .3s, color ease .3s
+	transform-origin: 0 0
+	.error &
+		color: $error
+	.focused &
+		transform: translateY(-220%) scale(.9)
+		color: $primary-light-color
+	.error.focused &
+		color: $error
+	.hasValue &
+		transform: translateY(-220%) scale(.9)
+
+input, textarea, select
+	&.materialFormField
+		box-sizing: border-box
+		background-color: #fff
+		border: 0
+		outline: 0
+		width: 100%
+		border-width: 0
+		padding-left: 0
+		padding-right: 0
+		box-shadow: none
+		margin: 0
+		height: 2rem
+		color: #3e3e3e
+		font-size: 16px
+		font-weight: 500
+		appearance: none
+		font-family: Courier New, Courier, monospace
+		&:focus
+			box-shadow: none
+			background: none
 
 .button
-	padding: .25rem 0rem
-	text-align: center
-	display: block
-	&:not(:last-child)
-		margin-right: .5rem
-
-.btnContainer
-	display: flex
-	justify-content: center
-	align-content: center
+	background-color: $primary-light-color
+	flex: 1 1 0
+	margin: .5rem
+	border: none
+	line-height: 2.5
+	font-size: 1rem
+	color: white

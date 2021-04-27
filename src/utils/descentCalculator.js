@@ -22,7 +22,7 @@ export default class DescentCalculator {
 		}
 	}
 
-	paramsOK () {
+	errors () {
 		const difference = () => {
 			return this.currAlt > this.desAlt ? true : false
 		}
@@ -33,26 +33,23 @@ export default class DescentCalculator {
 			return this.grndSpeed > 0 && this.grndSpeed <= 1234.8 ? true : false
 		}
 
+		const errors = []
 		const params = {
 			difference: difference(),
 			rate: rate(),
 			speed: speed()
 		}
 
-		if (difference() && rate() && speed()) {
-			return true
-		} else {
-			for (const param in params) {
-				if (!params[param]) {
-					console.log(`Check your ${param} input.`)
-				}
+		for (const param in params) {
+			if (!params[param]) {
+				errors.push(`Check your ${param} input.`)
 			}
-			return false
 		}
+		return errors
 	}
 
 	getResults () {
-		if (this.paramsOK()) {
+		if (!this.errors().length) {
 			const results = {
 				ToD: this.getTOD(),
 				descentTime: this.getDescentTime()
@@ -63,10 +60,10 @@ export default class DescentCalculator {
 
 	getTOD () {
 		const result = (this.altDiff / this.descRate) * (this.grndSpeed / 60)
-		return result.toFixed(2)
+		return Math.round(result)
 	}
 
 	getDescentTime () {
-		return (this.altDiff / this.descRate).toFixed(2)
+		return Math.round(this.altDiff / this.descRate)
 	}
 }

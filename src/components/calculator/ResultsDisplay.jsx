@@ -1,37 +1,27 @@
 import React from 'react'
 import { object } from 'prop-types'
+import cx from 'classnames'
 
 import classes from './ResultsDisplay.module.sass'
 
 const ResultsDisplay = ({ results }) => {
 
-	const showTod = () => results.ToD
-		? <>{results.ToD} miles away</>
-		: null
+	const styles = cx(classes.resultsRow, { [classes.visible]: results.ToD })
 
-	const showDescTime = () => results.descentTime
-		? <>{results.descentTime} minutes</>
-		: null
-
-	return <article className={classes.container}>
-		{/* <p className={classes.header}>Results:</p> */}
-		<div className={classes.resultsRow}>
-			<p>
-				ToD
-				<span>{showTod()}</span>
-			</p>
-			<p>
-				Descent time
-				<span>{showDescTime()}</span>
-			</p>
-		</div>
-	</article>
+	return <div className={styles}>
+		<p>
+			{results.ToD && <>{results.ToD}<br />
+				<small><em>miles away</em></small></>}
+		</p>
+		<p>
+			{results.descentTime && <>{results.descentTime}<br />
+				<small><em>mins ETA</em></small></>}
+		</p>
+	</div>
 }
 
 ResultsDisplay.propTypes = {
 	results: object
-
 }
 
-// memoed
 export default ResultsDisplay

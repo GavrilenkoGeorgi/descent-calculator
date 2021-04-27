@@ -1,31 +1,24 @@
-@import '../styles/_colors.sass'
-
-.container
-	p.header
-		text-align: center
-		margin: 0
-		font-size: 130%
+@import 'colors'
+@import 'dimensions'
 
 .resultsRow
 	display: flex
-	justify-content: space-around
-	margin-bottom: 1rem
+	margin: 1rem 0 1rem 0
+	opacity: 0
+	transition: opacity ease-in 1.5s
 	p
 		text-align: center
 		flex: 1 1 0
-		border: $light-color 1px solid
-		border-radius: .3rem
-		margin: .5rem 0
-		min-height: 5rem
-		display: flex
-		flex-direction: column
-		align-items: center
-		justify-content: center
+		margin: 0
+		min-height: $resultsDisplayHeight
+		font-weight: bolder
 		line-height: 1.6
-		color: $light-color
+		font-size: large
 		&:not(:last-child)
 			margin-right: .5rem
-		span
-			color: black
-			font-style: italic
-			font-weight: bolder
+		small
+			color: $light-color
+
+.visible
+	color: black
+	opacity: 1
