@@ -8,16 +8,16 @@ const ResultsDisplay = ({ results }) => {
 
 	const styles = cx(classes.resultsRow, { [classes.visible]: results.ToD })
 
-	return <div className={styles}>
-		<p>
+	return <section className={styles}>
+		<article>
 			{results.ToD && <>{results.ToD}<br />
 				<small><em>miles away</em></small></>}
-		</p>
-		<p>
+		</article>
+		<article>
 			{results.descentTime && <>{results.descentTime}<br />
 				<small><em>mins ETA</em></small></>}
-		</p>
-	</div>
+		</article>
+	</section>
 }
 
 ResultsDisplay.propTypes = {
