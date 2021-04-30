@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/descent-calculator/static/css/main.c03aa95a.chunk.css",
-    "main.js": "/descent-calculator/static/js/main.be04afd5.chunk.js",
-    "main.js.map": "/descent-calculator/static/js/main.be04afd5.chunk.js.map",
+    "main.css": "/descent-calculator/static/css/main.1c39e2ec.chunk.css",
+    "main.js": "/descent-calculator/static/js/main.70854e88.chunk.js",
+    "main.js.map": "/descent-calculator/static/js/main.70854e88.chunk.js.map",
     "runtime-main.js": "/descent-calculator/static/js/runtime-main.2c83a187.js",
     "runtime-main.js.map": "/descent-calculator/static/js/runtime-main.2c83a187.js.map",
     "static/js/2.c7eefe65.chunk.js": "/descent-calculator/static/js/2.c7eefe65.chunk.js",
@@ -12,13 +12,13 @@
     "index.html": "/descent-calculator/index.html",
     "service-worker.js": "/descent-calculator/service-worker.js",
     "service-worker.js.map": "/descent-calculator/service-worker.js.map",
-    "static/css/main.c03aa95a.chunk.css.map": "/descent-calculator/static/css/main.c03aa95a.chunk.css.map",
+    "static/css/main.1c39e2ec.chunk.css.map": "/descent-calculator/static/css/main.1c39e2ec.chunk.css.map",
     "static/js/2.c7eefe65.chunk.js.LICENSE.txt": "/descent-calculator/static/js/2.c7eefe65.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2c83a187.js",
     "static/js/2.c7eefe65.chunk.js",
-    "static/css/main.c03aa95a.chunk.css",
-    "static/js/main.be04afd5.chunk.js"
+    "static/css/main.1c39e2ec.chunk.css",
+    "static/js/main.70854e88.chunk.js"
   ]
 }
